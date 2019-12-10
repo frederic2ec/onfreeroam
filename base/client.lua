@@ -238,7 +238,3 @@ AddRemoteEvent("ShowWeaponMenu", function(weaponList)
     Dialog.setSelectLabeledOptions(weaponMenu, 1, 1, formatedWeaponList)
     Dialog.show(weaponMenu)
 end)
-
-AddRemoteEvent("ClientSetTime", function(time)
-	SetTime(time)
-end)
