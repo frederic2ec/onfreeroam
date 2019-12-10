@@ -28,24 +28,12 @@ local hairsList = {
 
 
 local shirtsList = {
-    "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Set_SpecialAgent_LPR",
-    "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_CH3D_Prisoner_LPR",
-    "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Knitted_Shirt_LPR",
-    "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_FormalJacket_LPR",
-    "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_FormalShirt_LPR",
-    "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_FormalShirt2_LPR",
-    "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_Labcoat_LPR",
-    "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_Shirt_LPR",
-    "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_TShirt_Knitted2_LPR",
-    "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_TShirt_Knitted_LPR",
-    "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_TShirt_LPR",
-    "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Police_Shirt-Long_LPR",
-    "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Police_Shirt-Short_LPR",
-    "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Set_Pimp_LPR",
-    "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Set_Pimp_Open_LPR",
-    "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Set_Police_LPR",
-    "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Set_Scientist_LPR",
-    "/Game/CharacterModels/Mafia/Meshes/SK_Mafia"
+    formal_shirt_1 = "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_FormalShirt_LPR",
+    formal_shirt_2 ="/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_FormalShirt2_LPR",
+    simple_shirt = "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_Shirt_LPR",
+    knitted_shirt_2 = "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_TShirt_Knitted2_LPR",
+    knitted_shirt_1 = "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_TShirt_Knitted_LPR",
+    tshirt = "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_TShirt_LPR",
 }
 
 local pantsList = {
@@ -181,15 +169,35 @@ AddEvent("OnDialogSubmit", function(dialog, button, ...)
     -- Skin Menu
     if dialog == skinMenu then
         if button == 1 then
+            local formatedHairsList = {}
+            for k,v in pairs(hairsList) do
+                formatedHairsList[v] = _("clothes_"..k)
+            end
+            Dialog.setSelectLabeledOptions(hairsMenu, 1, 1, formatedHairsList)
             Dialog.show(hairsMenu)
         end
         if button == 2 then
+            local formatedShirtsList = {}
+            for k,v in pairs(shirtsList) do
+                formatedShirtsList[v] = _("clothes_"..k)
+            end
+            Dialog.setSelectLabeledOptions(shirtsMenu, 1, 1, formatedShirtsList)
             Dialog.show(shirtsMenu)
         end
         if button == 3 then
+            local formatedPantsList = {}
+            for k,v in pairs(pantsList) do
+                formatedPantsList[v] = _("clothes_"..k)
+            end
+            Dialog.setSelectLabeledOptions(pantsMenu, 1, 1, formatedPantsList)
             Dialog.show(pantsMenu)
         end
         if button == 4 then
+            local formatedShoesList = {}
+            for k,v in pairs(shoesList) do
+                formatedShoesList[v] = _("clothes_"..k)
+            end
+            Dialog.setSelectLabeledOptions(shoesMenu, 1, 1, formatedShoesList)
             Dialog.show(shoesMenu)
         end
     end
