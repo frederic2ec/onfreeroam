@@ -6,7 +6,8 @@
         "spawn/server.lua",
         "vehicle/server.lua",
         "weapon/server.lua",
-        "skin/server.lua"
+        "skin/server.lua",
+        "whitelist/server.lua"
     ],
     "client_scripts": [
         "base/client.lua",

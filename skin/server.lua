@@ -15,6 +15,21 @@ AddRemoteEvent("CallChangeSkin", function(player, part, piece)
         PlayerData[player].shoes = piece
         CallRemoteEvent(player, "ChangeClothing", player, part, piece ) 
     end
+
+    for k,v in pairs(GetStreamedPlayersForPlayer(player)) do
+        if part == 0 then
+            CallRemoteEvent(k, "ChangeClothing", player, part, piece ) 
+        end
+        if part == 1 then
+            CallRemoteEvent(k, "ChangeClothing", player, part, piece ) 
+        end
+        if part == 4 then
+            CallRemoteEvent(k, "ChangeClothing", player, part, piece ) 
+        end
+        if part == 5 then
+            CallRemoteEvent(k, "ChangeClothing", player, part, piece ) 
+        end
+    end
 end)
 
 AddRemoteEvent("CallStreamedClothes", function(player, otherplayer)
