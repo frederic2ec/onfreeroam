@@ -59,31 +59,31 @@ local shoesList = {
 }
 
 AddEvent("OnTranslationReady", function()
-    freeroamMenu = Dialog.create("Freeroam Menu", nil, "Vehicle", "Weapon", "Skin", "Cancel")
+    freeroamMenu = Dialog.create(_("freeroam_menu"), nil, _("vehicle"), _("weapon"), _("skin"), _("cancel"))
 
     -- Vehicle Menu
-    vehicleMenu = Dialog.create("Vehicle Menu", nil, "Spawn Vehicle", "Vehicle Customization", "Cancel")
-    vehicleSpawnMenu = Dialog.create("Vehicle Menu", nil, "Spawn", "Cancel")
-    Dialog.addSelect(vehicleSpawnMenu, 1, "Vehicles List", 8)
-    vehicleCustomizeMenu = Dialog.create("Vehicle Menu", nil, "Set plate", "Set color", "Attach Nitro", "Repair", "Cancel")
-    Dialog.addSelect(vehicleCustomizeMenu, 1, "Vehicle Color", 1)
-    Dialog.addTextInput(vehicleCustomizeMenu, 1, "Plate Text")
+    vehicleMenu = Dialog.create(_("vehicle_menu"), nil, _("spawn_vehicle"), _("vehicle_customization"), _("cancel"))
+    vehicleSpawnMenu = Dialog.create(_("vehicle_menu"), nil, _("spawn"), _("cancel"))
+    Dialog.addSelect(vehicleSpawnMenu, 1, _("vehicle_list"), 8)
+    vehicleCustomizeMenu = Dialog.create(_("vehicle_menu"), nil, _("set_plate"), _("set_color"), _("attach_nitro"), _("repair"), _("cancel"))
+    Dialog.addSelect(vehicleCustomizeMenu, 1, _("vehicle_color"), 1)
+    Dialog.addTextInput(vehicleCustomizeMenu, 1, _("plate_text"))
 
     -- Weapons Menu
-    weaponMenu = Dialog.create("Weapon Menu", nil, "Give weapon", "Give munition", "Cancel")
-    Dialog.addSelect(weaponMenu, 1, "Weapons List", 8)
-    Dialog.addSelect(weaponMenu, 1, "Slot", 1, "1", "2", "3")
+    weaponMenu = Dialog.create(_("weapon_menu"), nil, _("give_weapon"), _("give_munition"), _("cancel"))
+    Dialog.addSelect(weaponMenu, 1, _("weapon_list"), 8)
+    Dialog.addSelect(weaponMenu, 1, _("slot"), 1, "1", "2", "3")
 
     -- Skin Menu
-    skinMenu = Dialog.create("Skin Menu", nil, "Hairs", "Shirts", "Pants", "Shoes", "Cancel")
-    hairsMenu = Dialog.create("Hairs Menu", nil, "Set hairs", "Cancel")
-    Dialog.addSelect(hairsMenu, 1, "Hairs List", 8, table.unpack(hairsList))
-    shirtsMenu = Dialog.create("Shirts Menu", nil, "Set shirts", "Cancel")
-    Dialog.addSelect(shirtsMenu, 1, "Shirts List", 8, table.unpack(shirtsList))
-    pantsMenu = Dialog.create("Pants Menu", nil, "Set pants", "Cancel")
-    Dialog.addSelect(pantsMenu, 1, "Pants List", 8, table.unpack(pantsList))
-    shoesMenu = Dialog.create("Shoes Menu", nil, "Set shoes", "Cancel")
-    Dialog.addSelect(shoesMenu, 1, "Shoes List", 8, table.unpack(shoesList))
+    skinMenu = Dialog.create(_("skin_menu"), nil, _("hairs"), _("shirts"), _("pants"), _("shoes"), _("cancel"))
+    hairsMenu = Dialog.create(_("hairs_menu"), nil, _("set_hairs"), _("cancel"))
+    Dialog.addSelect(hairsMenu, 1, _("hairs_list"), 8, table.unpack(hairsList))
+    shirtsMenu = Dialog.create(_("shirts_menu"), nil, _("set_shirts"), _("cancel"))
+    Dialog.addSelect(shirtsMenu, 1, _("shirts_list"), 8, table.unpack(shirtsList))
+    pantsMenu = Dialog.create(_("pants_menu"), nil, _("set_pants"), _("cancel"))
+    Dialog.addSelect(pantsMenu, 1, _("pants_list"), 8, table.unpack(pantsList))
+    shoesMenu = Dialog.create(_("shoes_menu"), nil, _("set_shoes"), _("cancel"))
+    Dialog.addSelect(shoesMenu, 1, _("shoes_list"), 8, table.unpack(shoesList))
 end)
 
 AddEvent("OnKeyPress", function( key )
@@ -114,7 +114,7 @@ AddEvent("OnDialogSubmit", function(dialog, button, ...)
         end
         if button == 2 then
             if GetPlayerVehicle() == 0 then
-                AddPlayerChat("You need to be in a car to customize it !")
+                AddPlayerChat(_("need_car"))
             else
                 local formatedColorList = {}
                 for k,v in pairs(vehicleColor) do
@@ -129,7 +129,7 @@ AddEvent("OnDialogSubmit", function(dialog, button, ...)
     if dialog == vehicleSpawnMenu then
         if button == 1 then
             if args[1] == "" then
-                AddPlayerChat("Please select a vehicle !")
+                AddPlayerChat(_("select_vehicle"))
             else
                 CallRemoteEvent("CallSpawnVehicle", args[1])
             end
@@ -139,10 +139,10 @@ AddEvent("OnDialogSubmit", function(dialog, button, ...)
     if dialog == vehicleCustomizeMenu then
         if button == 1 then
             if args[2] == "" then
-                AddPlayerChat("Please enter a plate name !")
+                AddPlayerChat(_("enter_plate"))
             else
                 if string.len(args[2]) > 13 then
-                    AddPlayerChat("Please enter an lower text !")
+                    AddPlayerChat(_("shorter_text"))
                 else
                     CallRemoteEvent("CallSetVehiclePlate", args[2])
                 end
@@ -150,7 +150,7 @@ AddEvent("OnDialogSubmit", function(dialog, button, ...)
         end
         if button == 2 then
             if args[1] == "" then
-                AddPlayerChat("Please select a color !")
+                AddPlayerChat(_("select_color"))
             else
                 CallRemoteEvent("CallSetVehicleColor", args[1])
             end
@@ -167,7 +167,7 @@ AddEvent("OnDialogSubmit", function(dialog, button, ...)
     if dialog == weaponMenu then
         if button == 1 then
             if args[1] == "" then
-                AddPlayerChat("Please select a weapon !")
+                AddPlayerChat(_("select_weapon"))
             else
                 CallRemoteEvent("CallGiveWeapon", args[1], args[2])
             end
@@ -194,28 +194,28 @@ AddEvent("OnDialogSubmit", function(dialog, button, ...)
     end
     if dialog == hairsMenu then
         if args[1] == "" then
-            AddPlayerChat("Please select an hair !")
+            AddPlayerChat(_("select_hair"))
         else
             CallRemoteEvent("CallChangeSkin", 0, args[1])
         end
     end
     if dialog == shirtsMenu then
         if args[1] == "" then
-            AddPlayerChat("Please select a shirt !")
+            AddPlayerChat(_("select_shirt"))
         else
             CallRemoteEvent("CallChangeSkin", 1, args[1])
         end
     end
     if dialog == pantsMenu then
         if args[1] == "" then
-            AddPlayerChat("Please select a pants !")
+            AddPlayerChat(_("select_pant"))
         else
             CallRemoteEvent("CallChangeSkin", 4, args[1])
         end
     end
     if dialog == shoesMenu then
         if args[1] == "" then
-            AddPlayerChat("Please select a shoes !")
+            AddPlayerChat(_("select_shoes"))
         else
             CallRemoteEvent("CallChangeSkin", 5, args[1])
         end
@@ -225,7 +225,7 @@ end)
 AddRemoteEvent("ShowVehicleSpawnMenu", function(vehicleList) 
     local formatedVehicleList = {}
     for k,v in pairs(vehicleList) do
-        formatedVehicleList[k] = k
+        formatedVehicleList[k] = _(k)
     end
     Dialog.setSelectLabeledOptions(vehicleSpawnMenu, 1, 1, formatedVehicleList)
     Dialog.show(vehicleSpawnMenu)
@@ -234,7 +234,7 @@ end)
 AddRemoteEvent("ShowWeaponMenu", function(weaponList)
     local formatedWeaponList = {}
     for k,v in pairs(weaponList) do
-        formatedWeaponList[k] = k
+        formatedWeaponList[k] = _(k)
     end
     Dialog.setSelectLabeledOptions(weaponMenu, 1, 1, formatedWeaponList)
     Dialog.show(weaponMenu)

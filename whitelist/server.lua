@@ -15,7 +15,7 @@ AddEvent("OnPlayerSteamAuth", function( player )
                 return
             end
         end
-        KickPlayer(player, "You are not whitelisted")
+        KickPlayer(player, _("not_Whitelist"))
     end
 end)
 
@@ -26,10 +26,10 @@ AddCommand("whitelist", function(player, status)
         if tostring(v) == tostring(steamid) then
             if status == "true" then
                 whitelistStatus = true
-                AddPlayerChatAll("Whitelist on")
+                AddPlayerChatAll(_("whitelist_on"))
             else
                 whitelistStatus = false
-                AddPlayerChatAll("Whitelist off")
+                AddPlayerChatAll(_("whitelist_off"))
             end
         end
     end
