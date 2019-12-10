@@ -18,13 +18,14 @@ local vehicleColor = {
 }
 
 local hairsList = {
-    "/Game/CharacterModels/SkeletalMesh/HZN_CH3D_Hair_Business_LP",
-    "/Game/CharacterModels/SkeletalMesh/HZN_CH3D_Hair_Scientist_LP",
-    "/Game/CharacterModels/SkeletalMesh/HZN_CH3D_Normal_Hair_01_LPR",
-    "/Game/CharacterModels/SkeletalMesh/HZN_CH3D_Police_Hair_LPR",
-    "/Game/CharacterModels/SkeletalMesh/HZN_CH3D_Normal_Hair_03_LPR",
-    "/Game/CharacterModels/SkeletalMesh/HZN_CH3D_Normal_Hair_02_LPR"
+    hairs_police = "/Game/CharacterModels/SkeletalMesh/HZN_CH3D_Police_Hair_LPR",
+    hairs_business = "/Game/CharacterModels/SkeletalMesh/HZN_CH3D_Hair_Business_LP",
+    hairs_scientist ="/Game/CharacterModels/SkeletalMesh/HZN_CH3D_Hair_Scientist_LP",
+    hairs_1 = "/Game/CharacterModels/SkeletalMesh/HZN_CH3D_Normal_Hair_01_LPR",
+    hairs_3 = "/Game/CharacterModels/SkeletalMesh/HZN_CH3D_Normal_Hair_03_LPR",
+    hairs_2 = "/Game/CharacterModels/SkeletalMesh/HZN_CH3D_Normal_Hair_02_LPR"
 }
+
 
 local shirtsList = {
     "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Set_SpecialAgent_LPR",
@@ -48,14 +49,14 @@ local shirtsList = {
 }
 
 local pantsList = {
-    "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_CargoPants_LPR",
-    "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_DenimPants_LPR",
-    "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_FormalPants_LPR"
+    cargo_pants = "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_CargoPants_LPR",
+    denim_pants = "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_DenimPants_LPR",
+    formal_pants = "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_FormalPants_LPR"
 }
 
 local shoesList = {
-    "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_BusinessShoes_LPR",
-    "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_NormalShoes_LPR"
+    normal_shoes = "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_NormalShoes_LPR",
+    business_shoes = "/Game/CharacterModels/SkeletalMesh/Outfits/HZN_Outfit_Piece_BusinessShoes_LPR"
 }
 
 AddEvent("OnTranslationReady", function()
@@ -118,7 +119,7 @@ AddEvent("OnDialogSubmit", function(dialog, button, ...)
             else
                 local formatedColorList = {}
                 for k,v in pairs(vehicleColor) do
-                    formatedColorList[v] = k
+                    formatedColorList[v] = _(k)
                 end
                 Dialog.setSelectLabeledOptions(vehicleCustomizeMenu, 1, 1, formatedColorList)
                 Dialog.show(vehicleCustomizeMenu)
