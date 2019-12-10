@@ -1,0 +1,21 @@
+{
+    "whitelist_on": "Whitelist On",
+    "whitelist_off": "Whitelist Off",
+    "not_whitelist": "You are not whitelisted !",
+    "cancel": "Cancel",
+    "vehicle_menu": "Vehicle Menu",
+    "freeroam_menu": "Freeroam Menu",
+    "vehicle": "Vehicle",
+    "weapon": "Weapon",
+    "skin": "Skin",
+    "spawn_vehicle": "Spawn Vehicle",
+    "vehicle_customization": "Vehicle Customization",
+    "spawn": "Spawn",
+    "vehicle_list": "Vehicle List",
+    "set_plate": "Set Plate",
+    "set_color": "Set Color",
+    "attach_nitro": "Attach Nitro",
+    "repair": "Repair",
+    "vehicle_color": "Vehicle Color",
+    "plate_text": "Plate Text"
+}
